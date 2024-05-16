@@ -9,7 +9,8 @@ interface Props {
 const SideMenuButton = ({ icon, active, onClick }: Props) => {
     return  (
         <button
-            className={`flex pl-6 py-1.5 w-20 h-10 ${active ? "bg-blue-600 rounded shadow-2xl translate-y-2.5 transition-colors transition" : ""}`}
+            className={`flex items-center justify-center h-20 ${active 
+                ? "bg-blue-600 rounded shadow-2xl translate-y-2.5 transition-all" : ""}`}
             onClick={onClick}
         >
             {icon}

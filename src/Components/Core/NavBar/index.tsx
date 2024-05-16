@@ -1,6 +1,4 @@
-import { AppBar, Avatar, Toolbar, Typography } from "@mui/material";
 import { highlightLastFourCharactersWithColour } from "../../../Helpers/String.tsx";
-import { InternalMenu } from "../InternalMenu";
 
 interface Props {
     title: string;
@@ -8,22 +6,11 @@ interface Props {
 
 const NavBar = ({ title }: Props) => {
     const titleColour = highlightLastFourCharactersWithColour(title, {colour: "red"});
-    return <>
-        <div className="flex flex-row items-start">
-
-            <AppBar
-                color="default"
-                elevation={0}
-
-            >
-                <Toolbar>
-                    <Typography><Avatar alt="RadicalUSer">R</Avatar></Typography>
-                    <Typography>{titleColour}</Typography>
-                </Toolbar>
-            </AppBar>
+    return (
+        <div className="flex fixed top-0 right-0 h-20 flex-col items-start justify-center pl-8 bg-white text-3xl font-bold uppercase z-10 w-[calc(100%-5rem)]">
+            {titleColour}
         </div>
-        <InternalMenu />
-    </>
+    );
 }
 
-export  { NavBar }
+export { NavBar }

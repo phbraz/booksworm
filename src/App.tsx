@@ -1,11 +1,16 @@
 import './App.css'
-import { NavBar } from "./Components/Core/NavBar";
+import { NavBar } from "./Components/Core/Navbar";
+import { InternalMenu } from "./Components/Core/InternalMenu";
+import { BookSearch } from "./Components/BookSearch";
 
 function App() {
   return (
-    <>
-        <NavBar title="Radical" />
-    </>
+      <>
+          <div className="flex flex-row h-screen">
+              <InternalMenu/>
+              <NavBar title="Radical"/>
+          </div>
+      </>
   )
 }
 

@@ -9,7 +9,6 @@ import { SideMenuButton } from "../../SideMenuButton";
 const InternalMenu = () => {
     const [activeButton, setActiveButton] = useState<ButtonName | null>(null);
 
-    //Add a link here later on
     const buttons = [
         { name: ButtonName.Books, icon: <SignalCellularAltOutlinedIcon className="text-white" /> },
         { name: ButtonName.Favourites, icon: <FavoriteBorderOutlinedIcon className="text-white" /> },
@@ -22,22 +21,20 @@ const InternalMenu = () => {
 
     return (
         <>
-            <div className="flex absolute items-center justify-center flex-col h-20 bg-slate-400 text-opacity-95 w-20 z-[0]">
+            <div className="flex fixed left-0 top-0 h-20 items-center justify-center flex-col bg-slate-400 w-20 z-10">
                 <div>
-                    <Avatar alt="RadicalUSer">R</Avatar>
+                    <Avatar alt="RadicalUser">PB</Avatar>
                 </div>
             </div>
-            <div className="flex mt-3 justify-center flex-col space-y-10 bg-indigo-950 opacity-90 min-h-screen w-fit">
-                {buttons.map(button => {
-                    return (
-                        <SideMenuButton
-                            key={button.name}
-                            icon={button.icon}
-                            active={activeButton === button.name}
-                            onClick={() => handleButtonClick(button.name)}
-                        />
-                    )
-                })}
+            <div className="flex fixed left-0 top-20 justify-center flex-col space-y-10 bg-indigo-950 opacity-90 min-h-screen w-20">
+                {buttons.map(button => (
+                    <SideMenuButton
+                        key={button.name}
+                        icon={button.icon}
+                        active={activeButton === button.name}
+                        onClick={() => handleButtonClick(button.name)}
+                    />
+                ))}
             </div>
         </>
     );
