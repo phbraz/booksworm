@@ -22,6 +22,11 @@ const InternalMenu = () => {
 
     return (
         <>
+            <div className="flex absolute items-center justify-center flex-col h-20 bg-slate-400 text-opacity-95 w-20 z-[0]">
+                <div>
+                    <Avatar alt="RadicalUSer">R</Avatar>
+                </div>
+            </div>
             <div className="flex mt-3 justify-center flex-col space-y-10 bg-indigo-950 opacity-90 min-h-screen w-fit">
                 {buttons.map(button => {
                     return (
