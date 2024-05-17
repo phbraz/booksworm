@@ -20,13 +20,11 @@ const InternalMenu = () => {
     };
 
     return (
-        <>
-            <div className="flex fixed left-0 top-0 h-20 items-center justify-center flex-col bg-slate-400 w-20 z-10">
-                <div>
-                    <Avatar alt="RadicalUser">PB</Avatar>
-                </div>
+        <div className="fixed left-0 top-0 bottom-0 w-20 bg-slate-400">
+            <div className="flex items-center justify-center h-20">
+                <Avatar alt="RadicalUser">PB</Avatar>
             </div>
-            <div className="flex fixed left-0 top-20 justify-center flex-col space-y-10 bg-indigo-950 opacity-90 min-h-screen w-20">
+            <div className="flex flex-col items-center space-y-10 bg-indigo-950 opacity-90 min-h-screen pt-20">
                 {buttons.map(button => (
                     <SideMenuButton
                         key={button.name}
@@ -36,7 +34,7 @@ const InternalMenu = () => {
                     />
                 ))}
             </div>
-        </>
+        </div>
     );
 }
 

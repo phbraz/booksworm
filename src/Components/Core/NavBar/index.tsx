@@ -5,12 +5,12 @@ interface Props {
 }
 
 const NavBar = ({ title }: Props) => {
-    const titleColour = highlightLastFourCharactersWithColour(title, {colour: "red"});
+    const titleColour = highlightLastFourCharactersWithColour(title, { colour: "red" });
     return (
-        <div className="flex fixed top-0 right-0 h-20 flex-col items-start justify-center pl-8 bg-white text-3xl font-bold uppercase z-10 w-[calc(100%-5rem)]">
+        <div className="flex items-center h-20 bg-white text-3xl font-bold uppercase px-4">
             {titleColour}
         </div>
     );
 }
 
-export { NavBar }
+export { NavBar };
