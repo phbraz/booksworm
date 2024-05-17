@@ -1,23 +1,38 @@
-import { useState } from "react";
 import { Avatar } from "@mui/material";
 import SignalCellularAltOutlinedIcon from '@mui/icons-material/SignalCellularAltOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { ButtonName } from "../../../Helpers/String.tsx";
 import { SideMenuButton } from "../../SideMenuButton";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const InternalMenu = () => {
-    const [activeButton, setActiveButton] = useState<ButtonName | null>(null);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const buttons = [
-        { name: ButtonName.Books, icon: <SignalCellularAltOutlinedIcon className="text-white" /> },
-        { name: ButtonName.Favourites, icon: <FavoriteBorderOutlinedIcon className="text-white" /> },
-        { name: ButtonName.Settings, icon: <SettingsOutlinedIcon className="text-white" /> }
+        { name: ButtonName.Books, icon: <SignalCellularAltOutlinedIcon className="text-white" />, path: "/bestseller"},
+        { name: ButtonName.Favourites, icon: <FavoriteBorderOutlinedIcon className="text-white" />, path: "/favourites" },
+        { name: ButtonName.Settings, icon: <SettingsOutlinedIcon className="text-white" />, path: "/settings" }
     ];
 
     const handleButtonClick = (buttonName: ButtonName) => {
-        setActiveButton(buttonName);
+        switch (buttonName) {
+            case ButtonName.Books:
+                navigate("/bestseller");
+                break;
+            case ButtonName.Favourites:
+                navigate("/favourites");
+                break;
+            case ButtonName.Settings:
+                navigate("/settings");
+                break;
+            default:
+                break;
+        }
     };
+
+
 
     return (
         <div className="fixed left-0 top-0 bottom-0 w-20 bg-slate-400">
@@ -29,8 +44,9 @@ const InternalMenu = () => {
                     <SideMenuButton
                         key={button.name}
                         icon={button.icon}
-                        active={activeButton === button.name}
+                        active={location.pathname === button.path}
                         onClick={() => handleButtonClick(button.name)}
+                        routePath={button.path}
                     />
                 ))}
             </div>
