@@ -7,10 +7,8 @@ const HomePage = () => {
         <div className="flex h-screen">
             <InternalMenu />
             <div className="flex flex-col w-full ml-20">
-                <div className="flex-grow">
-                    <NavBar title="Radical" />
-                </div>
-                <div className="flex-grow flex items-start justify-start p-4">
+                <NavBar title="Radical" />
+                <div className="flex-grow flex justify-center p-4">
                     <BookSearch />
                 </div>
             </div>

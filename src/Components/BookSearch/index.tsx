@@ -2,8 +2,8 @@ import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
 const BookSearch = () => {
     return (
-        <div className="flex items-center justify-center w-full p-4">
-            <form className="flex flex-row w-full max-w-lg">
+        <div className="w-full">
+            <form className="flex flex-row justify-center max-w-7xl mt-8 mx-auto">
                 <SearchSharpIcon className="text-indigo-500 bg-white rounded-l-2xl h-14" style={{ fontSize: "40px", height: "56px" }} />
                 <input
                     className="shadow h-14 w-full pl-3"
