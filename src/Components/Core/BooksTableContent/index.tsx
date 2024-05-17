@@ -4,27 +4,21 @@ import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
 import { StarRating } from "../../../Helpers/Icons.tsx";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
-const TableContent = () => {
-    const createTableRow = ({ title, rate, price, author }: BooksData): BooksData => {
-        return {
-            title: title,
-            rate: rate,
-            price: price,
-            author: author,
-        }
-    }
+interface Props {
+    booksData: BooksData[];
+    isFavouritePage?: boolean
+}
 
-    const rows = [
-        createTableRow({price: 10, rate: 3, title: "book 1", author: "Author 1"}),
-        createTableRow({price: 29, rate: 1, title: "book 2", author: "Author 2"}),
-        createTableRow({price: 1, rate: 5, title: "book 3", author: "Author 3"}),
-    ];
+//using material ui mixed with tailwind
+//parsing the bookData object, we can build the table in different pages
+
+const BooksTableContent = ({ booksData, isFavouritePage }: Props) => {
 
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 100 }} aria-label="simple table">
                 <TableBody>
-                    {rows.map((row, index) => (
+                    {booksData.map((book, index) => (
                         <TableRow
                             key={index}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 }, '& > *': { borderBottom: 'unset' } }}
@@ -32,23 +26,31 @@ const TableContent = () => {
                             <TableCell component="th" scope="row">
                                 <div className="flex items-center font-bold uppercase text-lg text-indigo-950 opacity-90">
                                     <AutoStoriesOutlinedIcon className="text-slate-400 mr-2.5"/>
-                                    {row.title}
+                                    {book.title}
                                     <span className="pl-1 text-sm lowercase text-slate-400">by</span>
-                                    <span className="text-sm capitalize text-slate-400"> {row.author}</span>
+                                    <span className="text-sm capitalize text-slate-400"> {book.author}</span>
                                 </div>
                             </TableCell>
 
                             <TableCell>
-                                {StarRating(row.rate)}
+                                {StarRating(book.rate)}
                             </TableCell>
-
+                            {isFavouritePage && (
+                                <TableCell>
+                                    <button className="pr-6 hover:opacity-90" onClick={() => alert("not ready yet")}>Edit</button>
+                                    <button className="hover:opacity-90" onClick={() => alert("not ready yet")}>Delete</button>
+                                </TableCell>
+                            )}
                             <TableCell>
-                                <div className="flex items-center">
-                                    <div className="price-container flex items-center justify-center w-14 font-bold uppercase text-indigo-950 opacity-90 text-lg">{row.price} GBP</div>
-                                    <button onClick={() => {}}>
-                                        <FavoriteBorderOutlinedIcon className="text-slate-400" />
-                                    </button>
+                                <div className="flex flex-row">
+                                    <div className="font-bold text-lg text-indigo-950 opacity-90">{book.price} GBP</div>
                                 </div>
+                            </TableCell>
+                            <TableCell>
+                                <button onClick={() => {
+                                }}>
+                                    <FavoriteBorderOutlinedIcon className="text-slate-400"/>
+                                </button>
                             </TableCell>
                         </TableRow>
                     ))}
@@ -58,4 +60,4 @@ const TableContent = () => {
     )
 }
 
-export { TableContent }
+export { BooksTableContent }

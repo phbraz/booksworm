@@ -4,13 +4,14 @@ interface Props {
     colour?: "red" | "blue";
 }
 
+//some enum to prevent against typos
 enum ButtonName {
     Books = "Books",
     Favourites = "Favourites",
     Settings = "Settings"
 }
 
-
+//Seems the user wants to have the last 4 letters in red so this method handles it
 const highlightLastFourCharactersWithColour = (stringInput: string, { colour }: Props): ReactNode => {
     const restOfString = stringInput.substring(0, stringInput.length - 4);
     const lastThree = stringInput.substring(stringInput.length - 4);

@@ -1,3 +1,4 @@
+//couple of interfaces to help with our app
 interface ImagesContentProps {
     imagUrl: string;
     imgName: string;

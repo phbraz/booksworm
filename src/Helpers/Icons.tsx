@@ -1,11 +1,9 @@
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
-
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-
-//filled
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 
+//method to fill the start in our table component
 const StarRating = (rate: number) => {
     return (
         <div>

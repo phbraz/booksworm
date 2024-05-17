@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 
+//Our side menu buttons render.
 interface Props {
     icon: ReactElement;
     active: boolean;
