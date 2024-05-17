@@ -21,8 +21,7 @@ const HomePage = () => {
                     { imagUrl: "https://via.placeholder.com/150", imgName: "image3"  }
                 ]
         }
-
-    ]
+    ];
 
     return (
         <Layout>
