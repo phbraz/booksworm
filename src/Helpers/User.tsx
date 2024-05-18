@@ -4,10 +4,9 @@ import { cookieEnum } from "./String.tsx";
 
 
 //here we are going to handle the users token and ensure it's matching to the API server
-const getCookie = (name: string) => {
-
+const getCookie = () => {
     const cookies = cookie.parse(document.cookie);
-    return cookies[name]
+    return cookies[cookieEnum.booksApi];
 }
 
 const validateJwt = (token: string) => {
@@ -23,7 +22,7 @@ const validateJwt = (token: string) => {
 }
 
 const validateWebApiCookie = () => {
-    const webApiCookie = getCookie(cookieEnum.booksApi);
+    const webApiCookie = getCookie();
 
     if (webApiCookie) {
         const isValidJwt = validateJwt(webApiCookie);
@@ -34,4 +33,18 @@ const validateWebApiCookie = () => {
     return false;
 }
 
-export { validateWebApiCookie, getCookie };
+const getUserNameFromCookie = () => {
+
+    try {
+        const isTokenValid = validateWebApiCookie();
+        const token = isTokenValid ? getCookie() : "";
+        const jwtPayload = jwtDecode(token);
+
+        return jwtPayload.sub
+
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+export { validateWebApiCookie, getCookie, getUserNameFromCookie };

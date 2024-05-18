@@ -9,3 +9,12 @@ export interface LoginResponse {
     token: string;
     validTo: string;
 }
+
+export interface SaveBookToFavourite {
+    title: string;
+    author: string;
+    rate: number;
+    price: number;
+    isFavourite: boolean;
+    userEmail: string;
+}

@@ -15,6 +15,7 @@ export interface BooksData {
     price: number;
     rate: number;
     author: string;
+    isFavourite: boolean;
 }
 
 export interface ClassNames {

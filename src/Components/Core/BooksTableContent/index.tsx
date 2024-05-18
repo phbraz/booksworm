@@ -3,16 +3,35 @@ import { BooksData } from "../../../Helpers/Interface.tsx";
 import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
 import { StarRating } from "../../../Helpers/Icons.tsx";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import { useEffect, useState } from "react";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 
 interface Props {
     booksData: BooksData[];
     isFavouritePage?: boolean
+    onClick: (book: BooksData) => void;
 }
 
 //using material ui mixed with tailwind
 //parsing the bookData object, we can build the table in different pages
 
-const BooksTableContent = ({ booksData, isFavouritePage }: Props) => {
+const BooksTableContent = ({ booksData, isFavouritePage, onClick }: Props) => {
+    const [favourites, setFavourites] = useState<Map<string, boolean>>(new Map());
+
+    useEffect(() => {
+        const favouritesMap = new Map();
+        booksData.map((book) => {
+            favouritesMap.set(book.title, book.isFavourite || false);
+        });
+        setFavourites(favouritesMap);
+    }, [booksData]);
+
+    const toggleFavourite = (book: BooksData) => {
+        const updatedFavourite = !favourites.get(book.title);
+        setFavourites((prev) => new Map(prev.set(book.title, updatedFavourite)));
+        book.isFavourite = updatedFavourite;
+        onClick(book);
+    };
 
     return (
         <TableContainer component={Paper}>
@@ -47,9 +66,10 @@ const BooksTableContent = ({ booksData, isFavouritePage }: Props) => {
                                 </div>
                             </TableCell>
                             <TableCell>
-                                <button onClick={() => {
-                                }}>
-                                    <FavoriteBorderOutlinedIcon className="text-slate-400"/>
+                                <button onClick={() => toggleFavourite(book)}>
+                                    {book.isFavourite ? <FavoriteOutlinedIcon style={{ color: '#94a3b8' }} />
+                                        : <FavoriteBorderOutlinedIcon className="text-slate-400"/>
+                                    }
                                 </button>
                             </TableCell>
                         </TableRow>
