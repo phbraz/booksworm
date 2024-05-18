@@ -1,16 +1,44 @@
 import { Button, TextField } from "@mui/material";
 import { FormEvent, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { LoginModel, LoginResponse } from "../../API/Models";
+import cookie from "cookie";
+import { cookieEnum } from "../../Helpers/String.tsx";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    // I need to add react query here later.
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    //using react query allows to get some cool stuff out of the box, i.e: isLoading, isError and so on.
+    const mutation =  useMutation({
+        mutationFn: async (loginModel: LoginModel) => {
+            return await fetch("http://localhost:5242/api/Auth", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(loginModel)
+            })
+        },
+        onSuccess: async data => {
+            const dataResponse: LoginResponse = await data.json();
+            const addTokenToCookie = cookie.serialize(cookieEnum.booksApi, dataResponse.token);
+
+            document.cookie = addTokenToCookie;
+            window.location.reload();
+        },
+        onError: error => {
+            console.log(error);
+        }
+    })
+
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Form submission logic, e.g., send data to server
-        console.log('Email:', email);
-        console.log('Password:', password);
+        const loginModel: LoginModel = {
+            email: email,
+            password: password,
+        }
+
+        mutation.mutate(loginModel);
     };
 
     return (

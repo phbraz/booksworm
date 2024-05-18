@@ -1,6 +1,5 @@
 import cookie from "cookie"
 import { jwtDecode } from "jwt-decode";
-import * as process from "node:process";
 import { cookieEnum } from "./String.tsx";
 
 
@@ -14,7 +13,7 @@ const getCookie = (name: string) => {
 const validateJwt = (token: string) => {
     try {
         const jwtPayload = jwtDecode(token)
-        if (jwtPayload.iss === process.env.JWT_ISSUER) {
+        if (jwtPayload.iss === "BookWorms") {
             return true;
         }
     } catch (e) {
