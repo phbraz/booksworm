@@ -4,7 +4,7 @@ interface Props {
     title: string;
 }
 
-const NavBar = ({ title }: Props) => {
+const CoreNavBar = ({ title }: Props) => {
     const titleColour = highlightLastFourCharactersWithColour(title, { colour: "red" });
     return (
         <div className="flex items-center h-20 bg-white text-3xl font-bold uppercase px-4" >
@@ -15,4 +15,4 @@ const NavBar = ({ title }: Props) => {
     );
 }
 
-export { NavBar };
+export { CoreNavBar };

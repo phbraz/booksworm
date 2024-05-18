@@ -11,6 +11,10 @@ enum ButtonName {
     Settings = "Settings"
 }
 
+enum cookieEnum {
+    booksApi = "bookswormApi"
+}
+
 //Seems the user wants to have the last 4 letters in red so this method handles it
 const highlightLastFourCharactersWithColour = (stringInput: string, { colour }: Props): ReactNode => {
     const restOfString = stringInput.substring(0, stringInput.length - 4);
@@ -26,4 +30,4 @@ const highlightLastFourCharactersWithColour = (stringInput: string, { colour }: 
     }
 };
 
-export { highlightLastFourCharactersWithColour, ButtonName };
+export { highlightLastFourCharactersWithColour, ButtonName, cookieEnum };
