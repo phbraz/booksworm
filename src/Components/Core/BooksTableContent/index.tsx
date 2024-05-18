@@ -9,7 +9,7 @@ import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 interface Props {
     booksData: BooksData[];
     isFavouritePage?: boolean
-    onClick: (book: BooksData) => void;
+    onClick?: (book: BooksData) => void;
 }
 
 //using material ui mixed with tailwind
@@ -30,7 +30,9 @@ const BooksTableContent = ({ booksData, isFavouritePage, onClick }: Props) => {
         const updatedFavourite = !favourites.get(book.title);
         setFavourites((prev) => new Map(prev.set(book.title, updatedFavourite)));
         book.isFavourite = updatedFavourite;
-        onClick(book);
+        if (onClick) {
+            onClick(book);
+        }
     };
 
     return (

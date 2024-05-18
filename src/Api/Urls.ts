@@ -5,7 +5,8 @@ const Urls = {
         Login: () => `${Urls.Base}/Auth`
     },
     Books: {
-        SaveToFavourite: () => `${Urls.Base}/Books/SaveBookToFavourite`
+        SaveToFavourite: () => `${Urls.Base}/Books/SaveBookToFavourite`,
+        FetchFavourites: () => `${Urls.Base}/Books/FavouriteBooksByUser`,
     }
 }
 
