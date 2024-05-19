@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { LoginModel, LoginResponse } from "../../API/Models";
 import cookie from "cookie";
 import { cookieEnum } from "../../Helpers/String.tsx";
-import { Urls } from "../../API/Urls.ts";
+import { ApiUrls } from "../../Api/ApiUrls.ts";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ const Login = () => {
     //using react query allows to get some cool stuff out of the box, i.e: isLoading, isError and so on.
     const mutation =  useMutation({
         mutationFn: async (loginModel: LoginModel) => {
-            return await fetch(`${Urls.Auth.Login()}`, {
+            return await fetch(`${ApiUrls.Auth.Login()}`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(loginModel)

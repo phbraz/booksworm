@@ -4,7 +4,7 @@ import { BooksTableContent } from "../../Components/Core/BooksTableContent";
 import { BooksData } from "../../Helpers/Interface.tsx";
 import { useMutation } from "@tanstack/react-query";
 import { LoginModel } from "../../API/Models";
-import { Urls } from "../../API/Urls.ts";
+import { ApiUrls } from "../../Api/ApiUrls.ts";
 import { getCookie, getUserNameFromCookie, validateWebApiCookie } from "../../Helpers/User.tsx";
 import { useEffect, useState } from "react";
 
@@ -14,7 +14,7 @@ const Favourites = () => {
 
     const favouritesMutation = useMutation({
         mutationFn: async (loginModel: LoginModel) => {
-            const response = await fetch(`${Urls.Books.FetchFavourites()}`, {
+            const response = await fetch(`${ApiUrls.Books.FetchFavourites()}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

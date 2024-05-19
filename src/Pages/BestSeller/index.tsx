@@ -4,7 +4,7 @@ import { BooksTableContent } from "../../Components/Core/BooksTableContent";
 import { BooksData } from "../../Helpers/Interface.tsx";
 import { useMutation } from "@tanstack/react-query";
 import { SaveBookToFavourite } from "../../API/Models";
-import { Urls } from "../../API/Urls.ts";
+import { ApiUrls } from "../../Api/ApiUrls.ts";
 import { getCookie, getUserNameFromCookie, validateWebApiCookie } from "../../Helpers/User.tsx";
 import { ToastMessage } from "../../Components/ToastMessage";
 import { useState } from "react";
@@ -33,7 +33,7 @@ const BestSeller = () => {
 
     const saveToFavouriteMutation = useMutation({
         mutationFn: async (saveToFavourite: SaveBookToFavourite) => {
-            return await fetch(`${Urls.Books.SaveToFavourite()}`, {
+            return await fetch(`${ApiUrls.Books.SaveToFavourite()}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
