@@ -1,7 +1,5 @@
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 
 //method to fill the start in our table component
 const StarRating = (rate: number) => {
@@ -14,12 +12,4 @@ const StarRating = (rate: number) => {
     );
 };
 
-const SetFavourite = (isClicked: boolean) => {
-    return (
-        <div>
-            { isClicked ? <FavoriteOutlinedIcon style={{ color: '#94a3b8' }} /> : <FavoriteBorderOutlinedIcon className="text-slate-400" />}
-        </div>
-    )
-}
-
-export { StarRating, SetFavourite }
+export { StarRating }

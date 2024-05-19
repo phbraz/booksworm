@@ -6,23 +6,22 @@ import {
     TableContainer,
     TableRow
 } from "@mui/material";
-import { BooksData } from "../../../Helpers/Interface.tsx";
 import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
 import { StarRating } from "../../../Helpers/Icons.tsx";
-import { Book, FavouriteBooksByUser } from "../../../API/Models";
+import { BookResponse } from "../../../API/Models";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 
 interface Props {
-    booksData?: BooksData[] | FavouriteBooksByUser [] | Book[];
+    booksData?: BookResponse[];
     isFavouritePage?: boolean
-    onClick?: (book: BooksData) => void;
+    onClick?: (book: BookResponse) => void;
 }
 
 //using material ui mixed with tailwind
 //parsing the bookData object, we can build the table in different pages
 
 const BooksTableContent = ({ booksData, isFavouritePage, onClick }: Props) => {
-    console.log("fromBooksTableContent", booksData);
 
     return (
         <TableContainer component={Paper}>
@@ -58,9 +57,13 @@ const BooksTableContent = ({ booksData, isFavouritePage, onClick }: Props) => {
                                 </div>
                             </TableCell>
                             <TableCell>
-                                <button onClick={() => onClick!(book!)}  >
-                                    <FavoriteBorderOutlinedIcon className="text-slate-400"/>
-                                </button>
+                                {book.isFavourite
+                                    ? <FavoriteOutlinedIcon style={{ color: '#94a3b8' }} />
+                                    : (
+                                        <button onClick={() => onClick!(book!)}>
+                                            <FavoriteBorderOutlinedIcon className="text-slate-400"/>
+                                        </button>
+                                    )}
                             </TableCell>
                         </TableRow>
                         )) : (

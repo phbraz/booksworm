@@ -2,23 +2,23 @@ import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import { twMerge } from "tailwind-merge";
 import { FormEvent, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { Book } from "../../API/Models";
+import { BookResponse } from "../../API/Models";
 import { useNavigate } from "react-router-dom";
 
 
 interface Props {
     className?: string;
     link: string;
-    mutationFunction: (userSearchInput: string) => Promise<Book[]>;
+    mutationFunction: (userSearchInput: string) => Promise<BookResponse[]>;
 }
 
 const BookSearch = ({ className, link, mutationFunction }:Props ) => {
     const [searchTerm, setSearchTerm] = useState("");
     const navigate  = useNavigate();
 
-    const bookSearchMutation = useMutation<Book[]>({
+    const bookSearchMutation = useMutation<BookResponse[]>({
         mutationFn: async () => mutationFunction(searchTerm),
-        onSuccess: (books: Book[]) => {
+        onSuccess: (books: BookResponse[]) => {
             navigate(`${link}`, {
                 state: { bookUserSearchResponse: books },
             });

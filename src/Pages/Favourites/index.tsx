@@ -3,14 +3,14 @@ import { BookSearch } from "../../Components/BookSearch";
 import { BooksTableContent } from "../../Components/Core/BooksTableContent";
 import { FindFavouriteBookByUser, GetFavouriteBooks } from "../../API/Calls.tsx";
 import { useQuery } from "@tanstack/react-query";
-import { Book, FavouriteBooksByUser } from "../../API/Models";
+import { BookResponse } from "../../API/Models";
 import { CircularProgress } from "@mui/material";
 import { useLocation } from "react-router-dom";
 
 const Favourites = () => {
     const location = useLocation();
-    const bookDataFromUserSearch: Book[] = location.state?.bookUserSearchResponse ? location.state.bookUserSearchResponse : undefined;
-    const { data, isLoading } = useQuery<FavouriteBooksByUser[]>({
+    const bookDataFromUserSearch: BookResponse[] = location.state?.bookUserSearchResponse ? location.state.bookUserSearchResponse : undefined;
+    const { data, isLoading } = useQuery<BookResponse[]>({
         queryKey: ["favouriteBooksByUser"],
         queryFn: GetFavouriteBooks,
     });

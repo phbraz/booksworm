@@ -4,18 +4,18 @@ import { ContentLinkWithImagesProps } from "../../Helpers/Interface.tsx";
 import { Layout } from "../../Components/Core/Layout";
 import { useQuery } from "@tanstack/react-query";
 import { FetchAllBooks, FindBook, GetFavouriteBooks } from "../../API/Calls.tsx";
-import { Book, FavouriteBooksByUser } from "../../API/Models";
+import { BookResponse } from "../../API/Models";
 import { CircularProgress } from "@mui/material";
 
 const HomePage = () => {
     //we are creating an obj to hold the props to render the main page content and its images.
     //Then we are running a foreach (map in typescript) method and rendering each for the obj
-    const { data: bestSellerData , isLoading: isBestSellerLoading } = useQuery<Book[]>({
+    const { data: bestSellerData , isLoading: isBestSellerLoading } = useQuery<BookResponse[]>({
         queryKey: ["GetAllBooks"],
         queryFn: FetchAllBooks,
     })
 
-    const { data: favouriteData, isLoading: isFavouriteLoading} = useQuery<FavouriteBooksByUser[]>({
+    const { data: favouriteData, isLoading: isFavouriteLoading} = useQuery<BookResponse[]>({
         queryKey: ["GetFavouriteBooksByUser"],
         queryFn: GetFavouriteBooks
     });

@@ -10,15 +10,6 @@ export interface ContentLinkWithImagesProps {
     images: ImagesContentProps[] | ImagesContentProps;
 }
 
-export interface BooksData {
-    id: number;
-    title: string;
-    price: number;
-    rate: number;
-    author: string;
-    isFavourite?: boolean;
-}
-
 export interface ClassNames {
     className?: string;
 }
