@@ -1,5 +1,5 @@
 import {
-    Paper,
+    Paper, Rating,
     Table,
     TableBody,
     TableCell,
@@ -7,10 +7,10 @@ import {
     TableRow
 } from "@mui/material";
 import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
-import { StarRating } from "../../../Helpers/Icons.tsx";
 import { BookResponse } from "../../../API/Models";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
     booksData?: BookResponse[];
@@ -22,6 +22,7 @@ interface Props {
 //parsing the bookData object, we can build the table in different pages
 
 const BooksTableContent = ({ booksData, isFavouritePage, onClick }: Props) => {
+    const navigate = useNavigate();
 
     return (
         <TableContainer component={Paper}>
@@ -37,17 +38,22 @@ const BooksTableContent = ({ booksData, isFavouritePage, onClick }: Props) => {
                                 <div className="flex items-center font-bold uppercase text-lg text-indigo-950 opacity-90">
                                     <AutoStoriesOutlinedIcon className="text-slate-400 mr-2.5"/>
                                     {book.title}
-                                    <span className="pl-1 text-sm lowercase text-slate-400">by</span>
-                                    <span className="text-sm capitalize text-slate-400"> {book.author}</span>
+                                    <span className="pl-1 text-sm lowercase text-slate-400">{book.contributor}</span>
                                 </div>
                             </TableCell>
 
                             <TableCell>
-                                {StarRating(book.rate)}
+                                <Rating name="read-only" value={book.rate} readOnly />
                             </TableCell>
                             {isFavouritePage && (
                                 <TableCell>
-                                    <button className="pr-6 hover:opacity-90" onClick={() => alert("not ready yet")}>Edit</button>
+                                    <button className="pr-6 hover:opacity-90" onClick={() => {
+                                        navigate(`/favourites/edit/${book.id}`, {
+                                            state: { bookToEdit: book },
+                                        });
+                                    }}>
+                                        Edit
+                                    </button>
                                     <button className="hover:opacity-90" onClick={() => alert("not ready yet")}>Delete</button>
                                 </TableCell>
                             )}

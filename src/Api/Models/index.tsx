@@ -28,3 +28,13 @@ export interface BookResponse {
     bookImage: string;
     isFavourite: boolean;
 }
+
+export interface RemoveBookFromFavourite {
+    bookId: number
+}
+
+export interface UpdateBook {
+    bookId: number;
+    price: number;
+    rate: number;
+}

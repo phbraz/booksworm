@@ -11,6 +11,7 @@ const ApiUrls = {
         FindFavouriteBook: () => `${ApiUrls.Base}/Books/FindFavouriteBook`,
         AddBookToFavourite: () => `${ApiUrls.Base}/Books/AddBookToFavourite`,
         RemoveBookFromFavourites: () => `${ApiUrls.Base}/Books/RemoveBookFromFavourite`,
+        UpdateBookAndBookRateByUser: () => `${ApiUrls.Base}/Books/UpdateBookAndBookRateByUser`,
     }
 }
 

@@ -6,6 +6,7 @@ import { validateWebApiCookie } from "./Helpers/User.tsx";
 import { Login } from "./Pages/Login";
 import { NotFound } from "./Pages/NotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { EditBook } from "./Pages/EditBook";
 
 const queryClient = new QueryClient();
 const isValidJwt = validateWebApiCookie();
@@ -21,6 +22,7 @@ function App() {
                             <Route path="/" element={<HomePage />} />
                             <Route path="/bestseller" element={<BestSeller />} />
                             <Route path="/favourites" element={<Favourites />} />
+                            <Route path="/favourites/edit/:bookId" element={<EditBook />} />
                             <Route path="*" element={<NotFound />} />
                         </>
                     ): (<Route path="*" element={<Login />} />)
