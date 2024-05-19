@@ -1,13 +1,13 @@
 //couple of interfaces to help with our app
 interface ImagesContentProps {
-    imagUrl: string;
+    imgUrl: string;
     imgName: string;
 }
 
 export interface ContentLinkWithImagesProps {
     linkUrl: string;
     linkTitle: string;
-    images: ImagesContentProps[];
+    images: ImagesContentProps[] | ImagesContentProps;
 }
 
 export interface BooksData {
@@ -15,7 +15,7 @@ export interface BooksData {
     price: number;
     rate: number;
     author: string;
-    isFavourite: boolean;
+    isFavourite?: boolean;
 }
 
 export interface ClassNames {

@@ -5,8 +5,9 @@ const ApiUrls = {
         Login: () => `${ApiUrls.Base}/Auth`
     },
     Books: {
-        SaveToFavourite: () => `${ApiUrls.Base}/Books/SaveBookToFavourite`,
-        FetchFavourites: () => `${ApiUrls.Base}/Books/FavouriteBooksByUser`,
+        GetBooks: () => `${ApiUrls.Base}/Books/GetBooks`,
+        FindBook: () => `${ApiUrls.Base}/Books/FindBook`,
+        GetFavouriteBooksByUser: () => `${ApiUrls.Base}/Books/GetFavouriteBooksByUser`,
     }
 }
 

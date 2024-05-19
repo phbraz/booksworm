@@ -13,7 +13,7 @@ const ContentLinkWithImages = ( { linkUrl, linkTitle, images}: ContentLinkWithIm
             <div className="flex flex-row justify-start max-w-7xl mx-auto">
                 {images.map((image) => (
                     <div className="mr-4">
-                        <img src={image.imagUrl} alt={image.imagUrl} className="w-96 h-52"/>
+                        <img src={image.imgUrl} alt={image.imgUrl} className="w-96 h-52"/>
                     </div>
                 ))}
             </div>

@@ -10,11 +10,25 @@ export interface LoginResponse {
     validTo: string;
 }
 
-export interface SaveBookToFavourite {
+export interface Book {
+    id: number;
     title: string;
     author: string;
     rate: number;
     price: number;
-    isFavourite: boolean;
-    userEmail: string;
+    contributor: string;
+    bookImage: string;
+}
+
+export interface SearchBook {
+    userQuery: string;
+}
+
+export interface FavouriteBooksByUser {
+    bookId: number;
+    title: string;
+    author: string;
+    contributor: string;
+    price: number;
+    rate: number;
 }
