@@ -1,28 +1,40 @@
 import { Layout } from "../../Components/Core/Layout";
 import { BookSearch } from "../../Components/BookSearch";
 import { BooksTableContent } from "../../Components/Core/BooksTableContent";
-import { BooksData } from "../../Helpers/Interface.tsx";
 import { useLocation } from "react-router-dom";
-import { Book } from "../../API/Models";
-import { useQuery } from "@tanstack/react-query";
-import { FetchAllBooks, FindBook } from "../../API/Calls.tsx";
+import {  Book } from "../../API/Models";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { AddBookToFavouriteBook, FetchAllBooks, FindBook } from "../../API/Calls.tsx";
 import { CircularProgress } from "@mui/material";
+import { BooksData } from "../../Helpers/Interface.tsx";
 
 
 const BestSeller = () => {
-
     const location = useLocation();
     const bookDataFromUserSearch: Book[] = location.state?.bookUserSearchResponse ? location.state.bookUserSearchResponse : undefined;
 
     //fetching data from DB.
-    const { data, isLoading } = useQuery<Book[]>({
+    const { data, isLoading, refetch } = useQuery<Book[]>({
         queryKey: ["GetAllBooks"],
         queryFn: FetchAllBooks,
     })
+
+    const addToFavouriteMutation = useMutation({
+        mutationFn: async (bookId: number) => {
+            return await AddBookToFavouriteBook(bookId);
+        },
+        onSuccess: async () => {
+            return await refetch()
+        },
+        onError: (e) => {
+            console.error(e);
+        }
+    })
+
     const dataResponse = bookDataFromUserSearch ? bookDataFromUserSearch : data;
 
     const handleSubmit = (event: BooksData) => {
-        console.log(event);
+        addToFavouriteMutation.mutate(event.id);
     }
 
     if (isLoading) {

@@ -25,10 +25,15 @@ export interface SearchBook {
 }
 
 export interface FavouriteBooksByUser {
-    bookId: number;
+    id: number;
     title: string;
     author: string;
     contributor: string;
     price: number;
     rate: number;
+    bookImage: string;
+}
+
+export interface AddBookToFavourite {
+    bookId: number;
 }

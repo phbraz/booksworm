@@ -1,6 +1,6 @@
 import { ApiUrls } from "./ApiUrls.ts";
 import { getCookie } from "../Helpers/User.tsx";
-import { SearchBook } from "./Models";
+import { AddBookToFavourite, SearchBook } from "./Models";
 
 export const FetchAllBooks = async () => {
     const token = getCookie();
@@ -49,6 +49,49 @@ export const GetFavouriteBooks = async () => {
     });
     if (!response.ok) {
         throw new Error(`Failed to fetch books from API: ${response.status}`);
+    }
+
+    return await response.json();
+}
+
+export const FindFavouriteBookByUser = async (userInput: string) => {
+    const token = getCookie();
+    const bodyReq: SearchBook = {
+        userQuery: userInput,
+    }
+
+    const response = await fetch(`${ApiUrls.Books.FindFavouriteBook()}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(bodyReq),
+    })
+    if (!response.ok) {
+        throw new Error(`Failed to fetch books from API: ${response.status}`);
+    }
+
+    return await response.json();
+}
+
+export const AddBookToFavouriteBook = async (bookId: number) => {
+    const token = getCookie();
+    const bodyReq: AddBookToFavourite = {
+        bookId: bookId
+    };
+
+    const response = await fetch(`${ApiUrls.Books.AddBookToFavourite()}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(bodyReq),
+    });
+
+    if (!response.ok) {
+        throw new Error(`Failed to addBookToFavourite book: ${response.status}`);
     }
 
     return await response.json();

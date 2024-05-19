@@ -9,10 +9,11 @@ import {
 import { BooksData } from "../../../Helpers/Interface.tsx";
 import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
 import { StarRating } from "../../../Helpers/Icons.tsx";
-import { FavouriteBooksByUser } from "../../../API/Models";
+import { Book, FavouriteBooksByUser } from "../../../API/Models";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
 interface Props {
-    booksData?: BooksData[] | FavouriteBooksByUser [];
+    booksData?: BooksData[] | FavouriteBooksByUser [] | Book[];
     isFavouritePage?: boolean
     onClick?: (book: BooksData) => void;
 }
@@ -21,6 +22,7 @@ interface Props {
 //parsing the bookData object, we can build the table in different pages
 
 const BooksTableContent = ({ booksData, isFavouritePage, onClick }: Props) => {
+    console.log("fromBooksTableContent", booksData);
 
     return (
         <TableContainer component={Paper}>
@@ -54,6 +56,11 @@ const BooksTableContent = ({ booksData, isFavouritePage, onClick }: Props) => {
                                 <div className="flex flex-row">
                                     <div className="font-bold text-lg text-indigo-950 opacity-90">{book.price} GBP</div>
                                 </div>
+                            </TableCell>
+                            <TableCell>
+                                <button onClick={() => onClick!(book!)}  >
+                                    <FavoriteBorderOutlinedIcon className="text-slate-400"/>
+                                </button>
                             </TableCell>
                         </TableRow>
                         )) : (

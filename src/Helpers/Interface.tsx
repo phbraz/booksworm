@@ -11,6 +11,7 @@ export interface ContentLinkWithImagesProps {
 }
 
 export interface BooksData {
+    id: number;
     title: string;
     price: number;
     rate: number;
