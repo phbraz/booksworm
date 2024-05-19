@@ -1,5 +1,5 @@
 import cookie from "cookie"
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode, JwtPayload } from "jwt-decode";
 import { cookieEnum } from "./String.tsx";
 
 
@@ -9,11 +9,28 @@ const getCookie = () => {
     return cookies[cookieEnum.booksApi];
 }
 
+const isTokenExpired = (tokenPayLoad: JwtPayload) => {
+    const currentTime = Math.floor(Date.now() / 1000);
+    return tokenPayLoad.exp! < currentTime;
+}
+
+const logout = () => {
+    const cookieToLogout = cookie.serialize(cookieEnum.booksApi, "", {
+        maxAge: -1,
+        path: "/",
+    });
+
+    document.cookie = cookieToLogout;
+}
+
 const validateJwt = (token: string) => {
     try {
         const jwtPayload = jwtDecode(token)
-        if (jwtPayload.iss === "BookWorms") {
+        if (jwtPayload.iss === "BookWorms" && !isTokenExpired(jwtPayload)) {
             return true;
+        } else {
+            logout();
+            return false;
         }
     } catch (e) {
         console.error(e);

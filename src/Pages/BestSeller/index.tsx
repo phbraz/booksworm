@@ -4,7 +4,7 @@ import { BooksTableContent } from "../../Components/Core/BooksTableContent";
 import { BooksData } from "../../Helpers/Interface.tsx";
 import { useMutation } from "@tanstack/react-query";
 import { SaveBookToFavourite } from "../../API/Models";
-import { ApiUrls } from "../../Api/ApiUrls.ts";
+import { ApiUrls } from "../../API/ApiUrls.ts";
 import { getCookie, getUserNameFromCookie, validateWebApiCookie } from "../../Helpers/User.tsx";
 import { ToastMessage } from "../../Components/ToastMessage";
 import { useState } from "react";

@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { LoginModel, LoginResponse } from "../../API/Models";
 import cookie from "cookie";
 import { cookieEnum } from "../../Helpers/String.tsx";
-import { ApiUrls } from "../../Api/ApiUrls.ts";
+import { ApiUrls } from "../../API/ApiUrls.ts";
 
 const Login = () => {
     const [email, setEmail] = useState("");
