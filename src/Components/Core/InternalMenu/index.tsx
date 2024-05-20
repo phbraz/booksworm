@@ -18,7 +18,7 @@ const InternalMenu = () => {
         { name: ButtonName.Books, icon: <SignalCellularAltOutlinedIcon className="text-white" />, path: "/bestseller"},
         { name: ButtonName.Favourites, icon: <FavoriteBorderOutlinedIcon className="text-white" />, path: "/favourites" },
         { name: ButtonName.Settings, icon: <SettingsOutlinedIcon className="text-white" />, path: "/settings" },
-        { name: ButtonName.Logout, icon: <LogoutIcon className="text-white" />, path: "/" },
+        { name: ButtonName.Logout, icon: <LogoutIcon className="text-white" />, path: "/logout" },
     ];
 
     const handleButtonClick = (buttonName: ButtonName) => {
