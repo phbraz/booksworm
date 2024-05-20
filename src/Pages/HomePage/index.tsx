@@ -3,8 +3,8 @@ import { ContentLinkWithImages } from "../../Components/ContentLinkWithImages";
 import { ContentLinkWithImagesProps } from "../../Helpers/Interface.tsx";
 import { Layout } from "../../Components/Core/Layout";
 import { useQuery } from "@tanstack/react-query";
-import { FetchAllBooks, FindBook, GetFavouriteBooks } from "../../API/Calls.tsx";
-import { BookResponse } from "../../API/Models";
+import { FetchAllBooks, FindBook, GetFavouriteBooks } from "../../Api/Calls.tsx";
+import { BookResponse } from "../../Api/Models";
 import { CircularProgress } from "@mui/material";
 
 const HomePage = () => {

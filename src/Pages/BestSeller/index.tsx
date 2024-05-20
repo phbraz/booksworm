@@ -2,9 +2,9 @@ import { Layout } from "../../Components/Core/Layout";
 import { BookSearch } from "../../Components/BookSearch";
 import { BooksTableContent } from "../../Components/Core/BooksTableContent";
 import { useLocation } from "react-router-dom";
-import { BookResponse } from "../../API/Models";
+import { BookResponse } from "../../Api/Models";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { AddBookToFavouriteBook, FetchAllBooks, FindBook } from "../../API/Calls.tsx";
+import { AddBookToFavouriteBook, FetchAllBooks, FindBook } from "../../Api/Calls.tsx";
 import { CircularProgress } from "@mui/material";
 
 

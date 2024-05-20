@@ -33,8 +33,8 @@ const InternalMenu = () => {
                 navigate("/settings");
                 break;
             case ButtonName.Logout:
-                navigate("/");
                 logout();
+                navigate("/");
                 break;
             default:
                 break;

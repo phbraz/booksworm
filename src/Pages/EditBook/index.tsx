@@ -1,12 +1,12 @@
 import { Layout } from "../../Components/Core/Layout";
-import { BookResponse, UpdateBook } from "../../API/Models";
+import { BookResponse, UpdateBook } from "../../Api/Models";
 import { useLocation } from "react-router-dom";
 import { Rating } from "@mui/material";
 import { FormEvent, useState } from "react";
 import { Banner } from "../../Components/Banner";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useMutation } from "@tanstack/react-query";
-import { UpdateBookAndBookRateByUser } from "../../API/Calls.tsx";
+import { UpdateBookAndBookRateByUser } from "../../Api/Calls.tsx";
 import { ToastMessage } from "../../Components/ToastMessage";
 
 const EditBook = () => {

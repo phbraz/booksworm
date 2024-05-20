@@ -1,10 +1,10 @@
 import { Button, TextField } from "@mui/material";
 import { FormEvent, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { LoginModel, LoginResponse } from "../../API/Models";
+import { LoginModel, LoginResponse } from "../../Api/Models";
 import cookie from "cookie";
 import { cookieEnum } from "../../Helpers/String.tsx";
-import { ApiUrls } from "../../API/ApiUrls.ts";
+import { ApiUrls } from "../../Api/ApiUrls.ts";
 
 const Login = () => {
     const [email, setEmail] = useState("");

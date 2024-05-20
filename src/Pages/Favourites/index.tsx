@@ -1,7 +1,7 @@
 import { Layout } from "../../Components/Core/Layout";
 import { BookSearch } from "../../Components/BookSearch";
 import { BooksTableContent } from "../../Components/Core/BooksTableContent";
-import { FindFavouriteBookByUser, GetFavouriteBooks, RemoveBookFromFavourites } from "../../API/Calls.tsx";
+import { FindFavouriteBookByUser, GetFavouriteBooks, RemoveBookFromFavourites } from "../../Api/Calls.tsx";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { BookResponse } from "../../API/Models";
 import { CircularProgress } from "@mui/material";
