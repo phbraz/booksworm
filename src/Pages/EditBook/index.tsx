@@ -7,17 +7,34 @@ import { Banner } from "../../Components/Banner";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useMutation } from "@tanstack/react-query";
 import { UpdateBookAndBookRateByUser } from "../../API/Calls.tsx";
+import { ToastMessage } from "../../Components/ToastMessage";
 
 const EditBook = () => {
     const location = useLocation();
     const bookToEdit: BookResponse = location.state?.bookToEdit ? location.state.bookToEdit : undefined;
     const [rate, setRate] = useState<number | null>(1);
     const [updatedPrice, setUpdatePrice] = useState<number>(0);
+    const [isToastMessageOpen, setIsToastMessageOpen] = useState(false);
+    const [toastMessage, setToastMessage] = useState<string>("");
+
+    const handleToastClose = () => {
+        setIsToastMessageOpen(false);
+    }
+
 
     const updateBookMutation = useMutation({
         mutationFn: async (updateBook: UpdateBook) => {
             return await UpdateBookAndBookRateByUser(updateBook)
         },
+        onSuccess: () => {
+            setIsToastMessageOpen(true);
+            setToastMessage("Book updated successfully!");
+        },
+        onError: (e) => {
+            console.error(e);
+            setIsToastMessageOpen(true);
+            setToastMessage("Error updating book!");
+        }
     });
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -28,13 +45,14 @@ const EditBook = () => {
             price: updatedPrice,
             rate: rate ?? 0,
         }
-        
+
         updateBookMutation.mutate(updateBookData);
     }
 
 
     return <>
         <Layout>
+            <ToastMessage isOpen={isToastMessageOpen} onClose={handleToastClose} message={toastMessage} />
             <Banner title={bookToEdit.title} contributor={bookToEdit.contributor} imgRef={bookToEdit.bookImage} />
 
             <form className="flex flex-col items-start justify-center max-w-6xl mt-2 mx-auto h-52 relative" onSubmit={handleSubmit}>

@@ -8,7 +8,8 @@ interface Props {
 enum ButtonName {
     Books = "Books",
     Favourites = "Favourites",
-    Settings = "Settings"
+    Settings = "Settings",
+    Logout = "Logout"
 }
 
 enum cookieEnum {

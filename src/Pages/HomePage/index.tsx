@@ -25,13 +25,13 @@ const HomePage = () => {
         return {
             imgUrl: book.bookImage, imgName: book.title
         }
-    }): { imgUrl: "https://via.placeholder.com/150", imgName: "image1"  };
+    }): [{ imgUrl: "https://via.placeholder.com/150", imgName: "image1" }];
 
     const topThreeImgFavourites = favouriteData ? favouriteData.slice(0, 3).map(book => {
         return {
             imgUrl: book.bookImage, imgName: book.title
         }
-    }): { imgUrl: "https://via.placeholder.com/150", imgName: "image1" }
+    }): [{ imgUrl: "https://via.placeholder.com/150", imgName: "image1" }]
 
     const homePageBooksRender : ContentLinkWithImagesProps[] = [
         { linkTitle: "New York Times Best Seller", linkUrl: "/bestseller", images: topThreeImgsBestSeller },

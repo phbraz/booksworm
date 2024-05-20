@@ -2,10 +2,12 @@ import { Avatar } from "@mui/material";
 import SignalCellularAltOutlinedIcon from '@mui/icons-material/SignalCellularAltOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { ButtonName } from "../../../Helpers/String.tsx";
 import { SideMenuButton } from "../../SideMenuButton";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getUserNameFromCookie } from "../../../Helpers/User.tsx";
+import { getUserNameFromCookie, logout } from "../../../Helpers/User.tsx";
+
 
 const InternalMenu = () => {
     const location = useLocation();
@@ -15,7 +17,8 @@ const InternalMenu = () => {
     const buttons = [
         { name: ButtonName.Books, icon: <SignalCellularAltOutlinedIcon className="text-white" />, path: "/bestseller"},
         { name: ButtonName.Favourites, icon: <FavoriteBorderOutlinedIcon className="text-white" />, path: "/favourites" },
-        { name: ButtonName.Settings, icon: <SettingsOutlinedIcon className="text-white" />, path: "/settings" }
+        { name: ButtonName.Settings, icon: <SettingsOutlinedIcon className="text-white" />, path: "/settings" },
+        { name: ButtonName.Logout, icon: <LogoutIcon className="text-white" />, path: "/" },
     ];
 
     const handleButtonClick = (buttonName: ButtonName) => {
@@ -28,6 +31,10 @@ const InternalMenu = () => {
                 break;
             case ButtonName.Settings:
                 navigate("/settings");
+                break;
+            case ButtonName.Logout:
+                navigate("/");
+                logout();
                 break;
             default:
                 break;

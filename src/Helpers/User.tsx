@@ -64,4 +64,4 @@ const getUserNameFromCookie = () => {
     }
 }
 
-export { validateWebApiCookie, getCookie, getUserNameFromCookie };
+export { validateWebApiCookie, getCookie, getUserNameFromCookie, logout };

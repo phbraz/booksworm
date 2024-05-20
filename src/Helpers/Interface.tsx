@@ -7,7 +7,7 @@ interface ImagesContentProps {
 export interface ContentLinkWithImagesProps {
     linkUrl: string;
     linkTitle: string;
-    images: ImagesContentProps[] | ImagesContentProps;
+    images: ImagesContentProps[];
 }
 
 export interface ClassNames {
