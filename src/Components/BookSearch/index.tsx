@@ -2,7 +2,7 @@ import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import { twMerge } from "tailwind-merge";
 import { FormEvent, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { BookResponse } from "../../API/Models";
+import { BookResponse } from "../../Api/Models";
 import { useNavigate } from "react-router-dom";
 
 
